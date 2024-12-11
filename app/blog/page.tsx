@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
 import { SITE_INFO } from '@/seo'
@@ -8,10 +6,11 @@ import { es } from 'date-fns/locale'
 import BlogFilter from './blog-filter'
 import { client } from '@/lib/sanity.client'
 import { Badge } from "@/components/ui/badge"
+import { Blog, Category } from '@/types/sanity'
 import { urlForImage } from '@/lib/sanity.image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-async function getCategories() {
+async function getCategories(): Promise<Category[]> {
   return client.fetch(`
     *[_type == "category"] {
       _id,
@@ -21,13 +20,13 @@ async function getCategories() {
   `)
 }
 
-async function getBlogPosts() {
+async function getBlogPosts(): Promise<Blog[]> {
   return client.fetch(`
     *[_type == "blog"] | order(publishedAt desc) {
       _id,
       title,
       "slug": slug.current,
-      "author": author->name,
+      "author": author->{_id, name},
       mainImage,
       publishedAt,
       excerpt,
@@ -40,18 +39,7 @@ async function getBlogPosts() {
   `)
 }
 
-export default async function BlogPage() {
-  const [categories, posts] = await Promise.all([getCategories(), getBlogPosts()])
-
-  return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-8 pt-8">Blog de {SITE_INFO.siteName}</h1>
-      <BlogFilter categories={categories} posts={posts} />
-    </div>
-  )
-}
-
-export function BlogList({ posts }) {
+export function BlogList({ posts }: { posts: Blog[] }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => (
@@ -74,16 +62,17 @@ export function BlogList({ posts }) {
               alt={post.title}
               width={600}
               height={400}
+              priority={true}
               className="w-full h-48 object-cover"
             />
           )}
           <CardContent className="flex-grow">
-            <p className="text-muted-foreground line-clamp-4 text-justify">{post.excerpt}</p>
+            <p className="text-muted-foreground">{post.excerpt}</p>
           </CardContent>
           <CardFooter className="flex justify-between items-center">
             <div className="flex flex-wrap gap-2">
               {post.categories.map((category) => (
-                <Badge key={category._id} variant="secondary">{category?.title}</Badge>
+                <Badge key={category._id} variant="secondary">{category.title}</Badge>
               ))}
             </div>
             <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
@@ -92,6 +81,17 @@ export function BlogList({ posts }) {
           </CardFooter>
         </Card>
       ))}
+    </div>
+  )
+}
+
+export default async function BlogPage() {
+  const [categories, posts] = await Promise.all([getCategories(), getBlogPosts()])
+
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold mb-8 py-10 text-center">Bienvenido al Blog de {SITE_INFO.siteName}</h1>
+      <BlogFilter categories={categories} posts={posts} />
     </div>
   )
 }

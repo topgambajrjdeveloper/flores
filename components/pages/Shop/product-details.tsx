@@ -1,20 +1,32 @@
 'use client'
 
 import Image from 'next/image'
-import { urlForImage } from '@/lib/sanity.image'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { useState } from 'react'
+import { Product } from '@/types/sanity'
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { urlForImage } from '@/lib/sanity.image'
 import { useCart } from '@/contexts/cart-context'
-import AddToRecentlyViewed from '@/app/shop/[slug]/add-to-recently-viewed'
 import { RecentlyViewedProducts } from './recently-viewed-products'
+import AddToRecentlyViewed from '@/app/shop/[slug]/add-to-recently-viewed'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { toast } from '@/hooks/use-toast'
 
-type ProductDetailsProps = {
-  product: any // You might want to define a proper type for this
-}
 
-export default function ProductDetails({ product }: ProductDetailsProps) {
+export default function ProductDetails({ product }: { product: Product }) {
   const { addToCart } = useCart()
+  const [isAddingToCart, setIsAddingToCart] = useState(false)
+
+  const handleAddToCart = () => {
+    setIsAddingToCart(true)
+    addToCart(product)
+    toast({
+      title: "Producto añadido",
+      description: `${product.name} ha sido añadido al carrito.`,
+      duration: 3000,
+    })
+    setTimeout(() => setIsAddingToCart(false), 1000) // Reset after 1 second for button animation
+  }
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -65,7 +77,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             </div>
             <div>
               <h2 className="text-2xl font-semibold mb-2">Precio</h2>
-              <p className="text-3xl font-bold">${product.price.toFixed(2)}</p>
+              <p className="text-3xl font-bold">{product.price.toFixed(2)} €</p>
             </div>
             {product.sizes && product.sizes.length > 0 && (
               <div>
@@ -112,18 +124,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <Button
-            size="lg"
-            className="w-full"
-            onClick={() => addToCart({
-              id: product._id,
-              name: product.name,
-              price: product.price,
-              quantity: 1,
-              image: product.images[0]
-            })}
+          <Button 
+            size="lg" 
+            className="w-full" 
+            onClick={handleAddToCart}
+            disabled={isAddingToCart || !product.inStock}
           >
-            Añadir al carrito
+            {isAddingToCart ? 'Añadiendo...' : 'Añadir al carrito'}
           </Button>
         </CardFooter>
       </Card>

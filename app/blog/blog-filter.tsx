@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
+import { Blog, Category } from '@/types/sanity'
 import { BlogList } from './page'
 
-export default function BlogFilter({ categories, posts }) {
-  const [selectedCategory, setSelectedCategory] = useState(null)
+export default function BlogFilter({ categories, posts }: { categories: Category[], posts: Blog[] }) {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const filteredPosts = selectedCategory
     ? posts.filter(post => post.categories.some(cat => cat._id === selectedCategory))
@@ -26,7 +27,7 @@ export default function BlogFilter({ categories, posts }) {
             variant={selectedCategory === category._id ? "default" : "outline"}
             onClick={() => setSelectedCategory(category._id)}
           >
-            {category?.title}
+            {category.title}
           </Button>
         ))}
       </div>

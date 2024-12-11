@@ -15,6 +15,7 @@ export function FeaturedProducts({ products }) {
               <CardContent className="p-4">
                 {product.imageUrl && (
                   <Image
+                  priority={true}
                     src={urlForImage(product.imageUrl).width(300).height(300).url()}
                     alt={product.name}
                     width={300}

@@ -65,7 +65,7 @@ export default function ContactPage() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo.",
+        description: `Hubo un problema al enviar el formulario. Por favor, inténtalo de nuevo. ${error}`,
         variant: "destructive",
       })
     } finally {

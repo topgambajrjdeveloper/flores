@@ -1,4 +1,4 @@
-'use client'
+
 
 import Link from "next/link";
 import Image from "next/image";
@@ -62,6 +62,7 @@ export default async function ShopPage() {
             {product.imageUrl && (
               <div className="relative h-48">
                 <Image
+                priority={true}
                   src={urlForImage(product.imageUrl).url()}
                   alt={product.name}
                   fill

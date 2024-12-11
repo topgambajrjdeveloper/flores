@@ -34,6 +34,7 @@ export default function HeroSection({
             alt={product.name}
             width={600}
             height={400}
+            priority={true}
             className="rounded-lg shadow-lg dark:shadow-primary/20"
           />
         </div>

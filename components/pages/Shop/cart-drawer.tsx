@@ -1,19 +1,26 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
-import { Minus, Plus, X } from 'lucide-react'
-import { useCart } from '@/contexts/cart-context'
-import { urlForImage } from '@/lib/sanity.image'
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetFooter,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Minus, Plus, X } from "lucide-react";
+import { useCart } from "@/contexts/cart-context";
+import { urlForImage } from "@/lib/sanity.image";
 
 type CartDrawerProps = {
-  open: boolean
-  onClose: () => void
-}
+  open: boolean;
+  onClose: () => void;
+};
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
-  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart()
+  const { cart, removeFromCart, updateQuantity, totalPrice } = useCart();
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
@@ -23,23 +30,29 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         </SheetHeader>
         <div className="mt-8 space-y-4">
           {cart.map((item) => (
-            <div key={item.id} className="flex items-center space-x-4">
+            <div key={item._id} className="flex items-center space-x-4">
               <div className="relative w-16 h-16">
-                <Image
-                  src={urlForImage(item.image).width(64).height(64).url()}
-                  alt={item.name}
-                  fill
-                  className="object-cover rounded"
-                />
+                {item.image && (
+                  <Image
+                    src={urlForImage(item?.image).width(64).height(64).url()}
+                    alt={item.name}
+                    fill
+                    className="object-cover rounded"
+                  />
+                )}
               </div>
               <div className="flex-1">
                 <h3 className="text-sm font-medium">{item.name}</h3>
-                <p className="text-sm text-gray-500">{item.price.toFixed(2)} €</p>
+                <p className="text-sm text-gray-500">
+                  {item.price.toFixed(2)} €
+                </p>
                 <div className="flex items-center mt-1">
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    onClick={() =>
+                      updateQuantity(item._id, Math.max(1, item.quantity - 1))
+                    }
                   >
                     <Minus className="h-4 w-4" />
                   </Button>
@@ -47,7 +60,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
                   <Button
                     variant="outline"
                     size="icon"
-                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    onClick={() => updateQuantity(item._id, item.quantity + 1)}
                   >
                     <Plus className="h-4 w-4" />
                   </Button>
@@ -56,7 +69,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => removeFromCart(item._id)}
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -74,7 +87,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  )
-}
+  );
+};
 
-export default CartDrawer
+export default CartDrawer;

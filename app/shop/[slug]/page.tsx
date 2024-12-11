@@ -1,10 +1,11 @@
-'use client'
 
+
+import { Product } from '@/types/sanity'
 import { notFound } from 'next/navigation'
 import { client } from '@/lib/sanity.client'
 import ProductDetails from '@/components/pages/Shop/product-details'
 
-async function getProduct(slug: string) {
+async function getProduct(slug: string): Promise<Product | null> {
   return client.fetch(`
     *[_type == "product" && slug.current == $slug][0] {
       _id,

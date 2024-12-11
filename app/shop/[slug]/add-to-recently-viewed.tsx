@@ -1,20 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
-
-type Product = {
-  _id: string
-  name: string
-  slug: string
-  images: any[]
-  price: number
-}
+import { Product, RecentlyViewedProduct } from '@/types/sanity'
 
 export default function AddToRecentlyViewed({ product }: { product: Product }) {
   useEffect(() => {
     const addToRecentlyViewed = () => {
-      const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]')
-      const existingIndex = recentlyViewed.findIndex((item: Product) => item._id === product._id)
+      const recentlyViewed: RecentlyViewedProduct[] = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]')
+      const existingIndex = recentlyViewed.findIndex((item) => item._id === product._id)
       
       if (existingIndex !== -1) {
         recentlyViewed.splice(existingIndex, 1)
