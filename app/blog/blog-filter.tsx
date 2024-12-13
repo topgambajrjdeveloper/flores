@@ -2,11 +2,10 @@
 
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Blog, Category } from '@/types/sanity'
-import { BlogList } from './page'
+import BlogList from '@/components/pages/Blog/blog-list'
 
-export default function BlogFilter({ categories, posts }: { categories: Category[], posts: Blog[] }) {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+export default function BlogFilter({ categories, posts }) {
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const filteredPosts = selectedCategory
     ? posts.filter(post => post.categories.some(cat => cat._id === selectedCategory))

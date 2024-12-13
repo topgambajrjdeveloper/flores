@@ -3,33 +3,30 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Product } from '@/types/sanity'
+import { toast } from '@/hooks/use-toast'
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { urlForImage } from '@/lib/sanity.image'
 import { useCart } from '@/contexts/cart-context'
+import AddToRecentlyViewed from './add-to-recently-viewed'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { RecentlyViewedProducts } from './recently-viewed-products'
-import AddToRecentlyViewed from '@/app/shop/[slug]/add-to-recently-viewed'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { toast } from '@/hooks/use-toast'
-
 
 export default function ProductDetails({ product }: { product: Product }) {
+  const [quantity, setQuantity] = useState(1)
   const { addToCart } = useCart()
-  const [isAddingToCart, setIsAddingToCart] = useState(false)
 
   const handleAddToCart = () => {
-    setIsAddingToCart(true)
-    addToCart(product)
+    addToCart(product, quantity)
     toast({
       title: "Producto añadido",
-      description: `${product.name} ha sido añadido al carrito.`,
-      duration: 3000,
+      description: `${quantity} ${quantity > 1 ? 'unidades' : 'unidad'} de ${product.name} añadidas al carrito.`,
     })
-    setTimeout(() => setIsAddingToCart(false), 1000) // Reset after 1 second for button animation
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 pb-6">
       <AddToRecentlyViewed product={product} />
       <Card>
         <CardHeader>
@@ -75,10 +72,6 @@ export default function ProductDetails({ product }: { product: Product }) {
               <h2 className="text-2xl font-semibold mb-2">Descripción</h2>
               <p className="text-muted-foreground">{product.description}</p>
             </div>
-            <div>
-              <h2 className="text-2xl font-semibold mb-2">Precio</h2>
-              <p className="text-3xl font-bold">{product.price.toFixed(2)} €</p>
-            </div>
             {product.sizes && product.sizes.length > 0 && (
               <div>
                 <h2 className="text-xl font-semibold mb-2">Tamaños disponibles</h2>
@@ -121,18 +114,28 @@ export default function ProductDetails({ product }: { product: Product }) {
                 <p className="text-muted-foreground">{product.careInstructions}</p>
               </div>
             )}
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-2xl font-semibold mb-2">Precio</h2>
+                <p className="text-3xl font-bold">{product.price.toFixed(2)} €</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <label htmlFor="quantity" className="font-semibold">Cantidad:</label>
+                <Input
+                  id="quantity"
+                  type="number"
+                  min="1"
+                  value={quantity}
+                  onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+                  className="w-20"
+                />
+              </div>
+            </div>
           </div>
         </CardContent>
-        <CardFooter>
-          <Button 
-            size="lg" 
-            className="w-full" 
-            onClick={handleAddToCart}
-            disabled={isAddingToCart || !product.inStock}
-          >
-            {isAddingToCart ? 'Añadiendo...' : 'Añadir al carrito'}
-          </Button>
-        </CardFooter>
+        <Button size="lg" className="w-full" onClick={handleAddToCart} disabled={!product.inStock}>
+          Añadir al carrito
+        </Button>
       </Card>
       <RecentlyViewedProducts currentProductId={product._id} />
     </div>

@@ -1,5 +1,3 @@
-
-
 import { Product } from '@/types/sanity'
 import { notFound } from 'next/navigation'
 import { client } from '@/lib/sanity.client'
@@ -26,8 +24,13 @@ async function getProduct(slug: string): Promise<Product | null> {
   `, { slug })
 }
 
-export default async function ProductPage({ params }: { params: { slug: string } }) {
-  const product = await getProduct(params.slug)
+interface ProductPageProps {
+  params: Promise<{ slug: string }>
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { slug } = await params
+  const product = await getProduct(slug)
 
   if (!product) {
     notFound()

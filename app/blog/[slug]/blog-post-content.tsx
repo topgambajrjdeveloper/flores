@@ -10,6 +10,9 @@ import { PortableText } from '@portabletext/react'
 import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
+
+
+
 export default function BlogPostContent({ post }) {
   return (
     <article className="container mx-auto px-4 py-16">
