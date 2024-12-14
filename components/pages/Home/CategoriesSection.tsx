@@ -4,7 +4,11 @@ import { Category } from "@/types/sanity";
 import { urlForImage } from "@/lib/sanity.image";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
-export default function CategoriesSection({ categories }: Category) {
+interface CategoriesSectionProps {
+  categories: Category[]
+}
+
+export default function CategoriesSection({ categories }: CategoriesSectionProps) {
   return (
     <section className="py-16 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-colors">
       <div className="container mx-auto px-4">
@@ -22,7 +26,7 @@ export default function CategoriesSection({ categories }: Category) {
                       .width(300)
                       .height(200)
                       .url()}
-                    alt={category.name}
+                    alt={category.title}
                     width={300}
                     height={200}
                     className="w-full h-48 object-cover "
@@ -34,7 +38,7 @@ export default function CategoriesSection({ categories }: Category) {
                   href={`/shop?category=${category.slug}`}
                   className="text-lg font-semibold hover:underline text-center"
                 >
-                  {category.name}
+                  {category.title}
                 </Link>
               </CardFooter>
             </Card>

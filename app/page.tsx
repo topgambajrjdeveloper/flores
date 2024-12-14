@@ -6,6 +6,9 @@ import HeroSection from "@/components/pages/Home/HeroSection";
 import CategoriesSection from "@/components/pages/Home/CategoriesSection";
 import { FeaturedProducts } from "@/components/pages/Home/FeaturedProducts";
 
+
+
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [data, setData] = useState({

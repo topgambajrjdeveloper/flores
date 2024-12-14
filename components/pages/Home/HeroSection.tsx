@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { urlForImage } from "@/lib/sanity.image";
 
 
+
 export default function HeroSection({
   scrolled,
   scrollToCategories,

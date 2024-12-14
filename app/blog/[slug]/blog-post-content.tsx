@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
+import { Blog } from '@/types/sanity'
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { urlForImage } from '@/lib/sanity.image'
@@ -12,8 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 
 
-
-export default function BlogPostContent({ post }) {
+export default function BlogPostContent({ post }: { post: Blog }) {
   return (
     <article className="container mx-auto px-4 py-16">
       <Card className="overflow-hidden">

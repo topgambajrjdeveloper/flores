@@ -10,7 +10,7 @@ import {
   SheetFooter,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Minus, Plus, Trash2, X } from 'lucide-react';
+import { Minus, Plus, Trash2 } from 'lucide-react';
 import { urlForImage } from "@/lib/sanity.image";
 import { useCart } from "@/contexts/cart-context";
 

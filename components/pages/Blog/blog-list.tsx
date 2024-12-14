@@ -2,11 +2,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
+import { Blog } from '@/types/sanity'
+import { Badge } from "@/components/ui/badge"
 import { urlForImage } from '@/lib/sanity.image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
-export default function BlogList({ posts }) {
+interface BlogListProps {
+  posts: Blog[]
+}
+
+export default function BlogList({ posts }:BlogListProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => (

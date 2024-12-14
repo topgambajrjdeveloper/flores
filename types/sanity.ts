@@ -40,9 +40,11 @@ export interface Blog {
   title: string
   slug: string
   author: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mainImage: any // You might want to define a more specific type for images
   publishedAt: string
   categories: Array<{
+    _id:string
     title: string
     slug: string
   }>
@@ -53,6 +55,7 @@ export interface Blog {
     facebook?: boolean
     twitter?: boolean
     linkedin?: boolean
+    instagram?:boolean
   }
 }
 

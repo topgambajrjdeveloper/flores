@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Product } from '@/types/sanity'
+import { Button } from "@/components/ui/button"
 import { urlForImage } from '@/lib/sanity.image'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 
-export function FeaturedProducts({ products }) {
+interface FeaturedProductsProps {
+  products: Product[]
+}
+
+export function FeaturedProducts({ products }:FeaturedProductsProps) {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -13,10 +18,10 @@ export function FeaturedProducts({ products }) {
           {products.map((product) => (
             <Card key={product._id}>
               <CardContent className="p-4">
-                {product.imageUrl && (
+                {product.images && (
                   <Image
                   priority={true}
-                    src={urlForImage(product.imageUrl).width(300).height(300).url()}
+                    src={urlForImage(product.images).width(300).height(300).url()}
                     alt={product.name}
                     width={300}
                     height={300}
