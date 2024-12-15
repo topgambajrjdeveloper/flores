@@ -33,7 +33,7 @@ export default function SharedCardLink({ url, title, description, image, hashtag
         </div>
       </FacebookShareButton>
 
-      <TwitterShareButton url={url} title={title} via="MiFloristeria" hashtag={hashtag}>
+      <TwitterShareButton url={url} title={title} via="MiFloristeria">
         <div className={buttonClass}>
           <TwitterIcon size={24} round />
           <span className="sr-only">Compartir en Twitter</span>
