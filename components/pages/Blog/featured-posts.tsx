@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
 import { Blog } from '@/types/sanity'
-import { Badge } from "@/components/ui/badge"
+// import { Badge } from "@/components/ui/badge"
 import { urlForImage } from '@/lib/sanity.image'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -42,11 +42,11 @@ export default function FeaturedPosts({ posts }:FeaturedPostsProps) {
             <p className={`text-muted-foreground ${index === 0 ? 'line-clamp-4' : 'line-clamp-3'}`}>{post.excerpt}</p>
           </CardContent>
           <CardFooter className="flex justify-between items-center pt-4">
-            <div className="flex flex-wrap gap-2">
+            {/* <div className="flex flex-wrap gap-2">
               {post.categories.map((category) => (
                 <Badge key={category._id} variant="secondary">{category.title}</Badge>
               ))}
-            </div>
+            </div> */}
             <Link href={`/blog/${post.slug}`} className="text-primary hover:underline text-sm">
               Leer más
             </Link>

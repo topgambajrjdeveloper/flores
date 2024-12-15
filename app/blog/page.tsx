@@ -1,9 +1,9 @@
 
+import { SITE_INFO } from '@/seo'
 import BlogFilter from './blog-filter'
 import { client } from '@/lib/sanity.client'
 import BlogList from '@/components/pages/Blog/blog-list'
 import FeaturedPosts from '@/components/pages/Blog/featured-posts'
-import { SITE_INFO } from '@/seo'
 
 async function getCategories() {
   return client.fetch(`

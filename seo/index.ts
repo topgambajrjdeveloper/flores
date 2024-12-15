@@ -1,9 +1,9 @@
 export const SITE_INFO = {
   siteName: "La Higuera Verde",
-  defaultTitle: "La Higuera Verde | Ramos de Flores Exclusivos para Cada Ocasión",
+  defaultTitle: "La Higuera Verde | Florista",
   defaultDescription:
     "Descubre nuestra selección de ramos de flores frescas diseñados para expresar tus sentimientos en cualquier momento especial. Ofrecemos entregas rápidas y diseños personalizados para bodas, cumpleaños, aniversarios y más. Regala belleza y emociones con nuestras flores únicas.",
-  baseUrl: "https://www.flores-clara.com",
+  baseUrl: "https://www.lahigueraverdeflorista.com",
   keyWordsSite:
     "ramos de flores, flores frescas, entrega de flores, ramos personalizados, flores para bodas, ramos para aniversarios, regalos florales, diseño floral exclusivo, ramos para cumpleaños, flores a domicilio",
   defaultImage: "/imagen-destacada.jpg", // Ruta de la imagen por defecto
@@ -14,10 +14,10 @@ export const SITE_INFO = {
     title: "Ramos de Flores Exclusivos para Cada Ocasión",
     description:
       "Descubre nuestra selección de ramos de flores frescas diseñados para expresar tus sentimientos en cualquier momento especial. Ofrecemos entregas rápidas y diseños personalizados para bodas, cumpleaños, aniversarios y más. Regala belleza y emociones con nuestras flores únicas.",
-    url: "https://www.flores-clara.com",
+    url: "https://www.lahigueraverdeflorista.com",
     images: [
       {
-        url: "https://www.flores-clara.com/imagen-destacada.jpg",
+        url: "https://www.flahigueraverdeflorista.com/imagen-destacada.jpg",
         width: 800,
         height: 600,
         alt: "Ramo de flores colorido",
