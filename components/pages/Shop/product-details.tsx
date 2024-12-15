@@ -26,6 +26,8 @@ export default function ProductDetails({ product }: { product: Product }) {
     product.imageUrl && product.imageUrl.length > 0
       ? urlForImage(product.imageUrl[0]).width(1200).height(630).url()
       : undefined;
+      console.log(productUrl);
+      
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
 

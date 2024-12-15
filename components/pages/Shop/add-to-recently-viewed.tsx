@@ -17,7 +17,7 @@ export default function AddToRecentlyViewed({ product }: { product: Product }) {
         _id: product._id,
         name: product.name,
         slug: product.slug,
-        imageUrl: product.imageUrl[0],
+        imageUrl: product.imageUrl,
         price: product.price
       })
       

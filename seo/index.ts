@@ -2,22 +2,22 @@ export const SITE_INFO = {
   siteName: "La Higuera Verde",
   defaultTitle: "La Higuera Verde | Florista",
   defaultDescription:
-    "Descubre nuestra selección de ramos de flores frescas diseñados para expresar tus sentimientos en cualquier momento especial. Ofrecemos entregas rápidas y diseños personalizados para bodas, cumpleaños, aniversarios y más. Regala belleza y emociones con nuestras flores únicas.",
+    "En La Higuera Verde creamos diseños florales únicos para bodas, eventos corporativos y más. Ofrecemos ramos personalizados, centros de mesa y decoraciones especiales, transformando espacios con elegancia y creatividad. Nos comprometemos a hacer florecer tus sueños, brindando atención al detalle y calidad en cada proyecto.",
   baseUrl: "https://www.lahigueraverdeflorista.com",
   keyWordsSite:
-    "ramos de flores, flores frescas, entrega de flores, ramos personalizados, flores para bodas, ramos para aniversarios, regalos florales, diseño floral exclusivo, ramos para cumpleaños, flores a domicilio",
-  defaultImage: "/imagen-destacada.jpg", // Ruta de la imagen por defecto
+    "La Higuera Verde, arte floral, diseños florales, bodas, eventos corporativos, tendencias florales, ramos personalizados, centros de mesa, decoraciones para coches de novias, instalaciones florales, cuidado de flores, creatividad floral, servicios personalizados",
+  defaultImage: "/lahigueraverde.jpg", // Ruta de la imagen por defecto
   authors: [{ name: "flores-clara" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
-    title: "Ramos de Flores Exclusivos para Cada Ocasión",
+    title: "La Higuera Verde - Diseño Floral Personalizado",
     description:
-      "Descubre nuestra selección de ramos de flores frescas diseñados para expresar tus sentimientos en cualquier momento especial. Ofrecemos entregas rápidas y diseños personalizados para bodas, cumpleaños, aniversarios y más. Regala belleza y emociones con nuestras flores únicas.",
+      "Transformamos tus eventos con ramos, centros de mesa y decoraciones florales únicas. Calidad y creatividad para bodas, eventos corporativos y más.",
     url: "https://www.lahigueraverdeflorista.com",
     images: [
       {
-        url: "https://www.flahigueraverdeflorista.com/imagen-destacada.jpg",
+        url: "https://www.lahigueraverdeflorista.com/lahigueraverde.jpg",
         width: 800,
         height: 600,
         alt: "Ramo de flores colorido",

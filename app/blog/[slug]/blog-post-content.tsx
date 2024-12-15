@@ -17,8 +17,11 @@ import {
 } from "@/components/ui/card";
 import SharedCardLink from "@/components/shared-card-link";
 
+
 export default function BlogPostContent({ post }: { post: Blog }) {
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${post.slug}`;
+  
+  
   const postImage = post.mainImage
     ? urlForImage(post.mainImage).width(1200).height(630).url()
     : undefined;
