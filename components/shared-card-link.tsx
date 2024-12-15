@@ -25,7 +25,7 @@ export default function SharedCardLink({ url, title, description, image }:Shared
 
   return (
     <div className="flex space-x-2">
-      <FacebookShareButton url={url} quote={title} hashtag="#MiFloristeria">
+      <FacebookShareButton url={url} hashtag="#MiFloristeria">
         <div className={buttonClass}>
           <FacebookIcon size={24} round />
           <span className="sr-only">Compartir en Facebook</span>
