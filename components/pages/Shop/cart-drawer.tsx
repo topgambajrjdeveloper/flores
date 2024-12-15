@@ -48,9 +48,9 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
           {cart.map((item) => (
             <div key={item.product._id} className="flex items-center space-x-4">
               <div className="relative w-16 h-16">
-                {item.product.images && item.product.images.length > 0 && (
+                {item.product.imageUrl && item.product.imageUrl.length > 0 && (
                   <Image
-                    src={urlForImage(item.product.images[0]).width(64).height(64).url()}
+                    src={urlForImage(item.product.imageUrl[0]).width(64).height(64).url()}
                     alt={item.product.name}
                     fill
                     className="object-cover rounded"

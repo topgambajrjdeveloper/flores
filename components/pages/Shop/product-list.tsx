@@ -11,8 +11,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Product } from "@/types/sanity";
 
-export default function ProductList({ products }) {
+interface ProductListProps {
+  products: Product[]
+}
+
+export default function ProductList({ products }:ProductListProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {products.map((product) => (

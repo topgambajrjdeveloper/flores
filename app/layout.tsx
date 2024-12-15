@@ -13,6 +13,8 @@ const outfitSans = Outfit({
   subsets: ["latin"],
 });
 
+
+
 export const metadata: Metadata = {
   title: SITE_INFO.defaultTitle,
   description: SITE_INFO.defaultDescription,

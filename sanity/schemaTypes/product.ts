@@ -30,10 +30,7 @@ export default defineType({
       name: 'images',
       title: 'Imágenes',
       type: 'array',
-      of: [{ type: 'image' }],
-      options: {
-        hotspot: true
-      }
+      of: [{ type: 'image' }],      
     }),
     defineField({
       name: 'price',
@@ -73,7 +70,6 @@ export default defineType({
           { title: 'Agradecimiento', value: 'agradecimiento' },
           { title: 'Otro', value: 'otro' }
         ],
-        layout: 'checkbox'
       }
     }),
     defineField({
@@ -131,7 +127,6 @@ export default defineType({
           { title: 'Invierno', value: 'invierno' },
           { title: 'Todo el año', value: 'todo_el_ano' }
         ],
-        layout: 'checkbox'
       }
     }),
     defineField({
@@ -150,7 +145,6 @@ export default defineType({
           { title: 'Recogida en tienda', value: 'tienda' },
           { title: 'Envío express', value: 'express' }
         ],
-        layout: 'checkbox'
       }
     })
   ],

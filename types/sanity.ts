@@ -7,7 +7,7 @@ export interface Product {
   slug: string;
   price: number;
   description: string;
-  images: SanityImageSource[];
+  imageUrl: SanityImageSource[];
   categoryName?: string;
   inStock: boolean;
   sizes?: { name: string }[];

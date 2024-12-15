@@ -4,22 +4,27 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Product } from "@/types/sanity";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { urlForImage } from "@/lib/sanity.image";
 
-
+interface HeroSectionProps {
+  scrolled: boolean;
+  scrollToCategories: () => void;
+  product: Product;
+}
 
 export default function HeroSection({
   scrolled,
   scrollToCategories,
   product
-  }) {
+  }:HeroSectionProps) {
   return (
     <section className="min-h-screen flex items-center justify-center relative">
       <div className="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-8 md:mb-0">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-foreground">
+          <h1 className="text-4xl md:text-xl font-bold mb-4 text-foreground md:mt-20">
             {product.name}
           </h1>
           <p className="text-xl mb-8 pr-6 text-muted-foreground text-justify line-clamp-4">

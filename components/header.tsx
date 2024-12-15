@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { SITE_INFO } from "@/seo";
 import { useState, useEffect } from "react";
 import { ShoppingCart } from 'lucide-react';
 import BottomNav from "@/components/bottom-nav";
@@ -10,6 +9,7 @@ import { useCart } from "@/contexts/cart-context";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ErrorBoundary } from "@/components/error-boundary";
 import CartDrawer from "@/components/pages/Shop/cart-drawer";
+import SvgLogo from "./logo";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,8 +37,8 @@ export default function Header() {
       >
         <nav className="container mx-auto px-4 md:px-6">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-primary">
-              {SITE_INFO.siteName}
+            <Link href="/">
+              <SvgLogo width={200} height={50}/>
             </Link>
             <div className="hidden md:flex items-center space-x-4">
               <Button variant="ghost" asChild>

@@ -10,6 +10,8 @@ interface FeaturedProductsProps {
 }
 
 export function FeaturedProducts({ products }:FeaturedProductsProps) {
+ 
+  
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -18,10 +20,10 @@ export function FeaturedProducts({ products }:FeaturedProductsProps) {
           {products.map((product) => (
             <Card key={product._id}>
               <CardContent className="p-4">
-                {product.images && (
+                {product.imageUrl && (
                   <Image
                   priority={true}
-                    src={urlForImage(product.images).width(300).height(300).url()}
+                    src={urlForImage(product.imageUrl).width(300).height(300).url()}
                     alt={product.name}
                     width={300}
                     height={300}
@@ -29,7 +31,7 @@ export function FeaturedProducts({ products }:FeaturedProductsProps) {
                   />
                 )}
                 <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-                <p className="text-gray-600 mb-2">${product.price.toFixed(2)}</p>
+                <p className="text-gray-600 mb-2">{product.price.toFixed(2)} €</p>
               </CardContent>
               <CardFooter>
                 <Button asChild className="w-full">

@@ -36,9 +36,11 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
               <CardFooter className="p-4">
                 <Link
                   href={`/shop?category=${category.slug}`}
-                  className="text-lg font-semibold hover:underline text-center"
+                  className="text-lg font-semibold hover:underline text-center text-primary"
                 >
-                  {category.title}
+                  <p className="text-primary">
+                    {category.title}
+                    </p>
                 </Link>
               </CardFooter>
             </Card>
