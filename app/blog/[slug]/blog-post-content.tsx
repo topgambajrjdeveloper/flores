@@ -70,6 +70,7 @@ export default function BlogPostContent({ post }: { post: Blog }) {
                 title={post.title}
                 description={post.excerpt}
                 image={postImage}
+                hashtag="#LaHigueraVerde"
               />
             </div>
           </div>

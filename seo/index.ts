@@ -1,6 +1,6 @@
 export const SITE_INFO = {
-  siteName: "La Higera Verde",
-  defaultTitle: "La Higera Verde | Ramos de Flores Exclusivos para Cada Ocasión",
+  siteName: "La Higuera Verde",
+  defaultTitle: "La Higuera Verde | Ramos de Flores Exclusivos para Cada Ocasión",
   defaultDescription:
     "Descubre nuestra selección de ramos de flores frescas diseñados para expresar tus sentimientos en cualquier momento especial. Ofrecemos entregas rápidas y diseños personalizados para bodas, cumpleaños, aniversarios y más. Regala belleza y emociones con nuestras flores únicas.",
   baseUrl: "https://www.flores-clara.com",

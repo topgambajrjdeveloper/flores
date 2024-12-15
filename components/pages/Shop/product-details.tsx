@@ -177,6 +177,7 @@ export default function ProductDetails({ product }: { product: Product }) {
               title={`Mira este hermoso arreglo floral: ${product.name}`}
               description={product.description}
               image={productImage}
+              hashtag="#LaHigueraVerde"
             />
           </div>{" "}
         </div>
